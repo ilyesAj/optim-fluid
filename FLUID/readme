@@ -1,0 +1,11 @@
+pour BLAS , on a utiliser openblas une bibliothéque optimisé de BLAS 
+installation : https://github.com/xianyi/OpenBLAS
+dépendances : libopenblas-base
+default directory : /opt/OpenBLAS
+normalement avec BLAS uniquement installé le make all marche mais il faudra enlever le link (-L/opt/OpenBLAS/lib) ainsi que modifier BLASLIBS (-lopenblas avec -lblas) et modifier l'inculde dans blasflags -I /opt/OpenBLAS/include/ 
+
+détails optimisations : 
+make optim1 : optimisé avec -O3
+make optim2 : optimisé avec -ffast-math
+make optim3 : optimisé avec la parllélisation OPENMP
+make all : vectorisation + optim de code 

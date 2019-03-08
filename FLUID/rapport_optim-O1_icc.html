@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Annotated source listing for\/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c</title>
+<style>
+*{margin:0;padding:0}body,html{color:#000;background:#fff;height:100%;width:100%;font-family:"Lucida Sans Unicode","Lucida Grande",sans-serif;overflow:hidden}.header{position:absolute;top:0;height:50px;width:100%;background:#0071c5;color:#fff}.content{position:absolute;left:0;right:0;width:75%;top:50px;bottom:40px;margin:0 auto}.content .inner_header{height:30px;background:#ddd}.content .scrollable_right{position:absolute;left:300px;bottom:0;top:30px;right:0;overflow-y:scroll;padding:3px 5px}.content .scrollable_left{overflow-y:scroll;position:absolute;width:285px;top:30px;bottom:0;padding:3px 5px;border-left:thick solid #ddd}.footer{position:absolute;bottom:0;height:40px;width:100%;background:#0071c5;text-align:center;color:#fff}.header .title{position:relative;padding:7px 5px;left:12.5%;color:#fff;font-size:20px;font-weight:bolder;text-shadow:1px 1px #000}.content .title{padding:3px 5px;color:#0071c5;font-size:14px;font-weight:bolder}.footer .title{padding:10px;font-size:12px}.content .scrollable_left .annot_link{font-size:14px;color:#0071c5}.content .scrollable_left .annot_link:visited {color:purple;text-decoration:underline;}.footnote{color: #0071c5;}</style>
+</head>
+<body>
+<div class="header">
+<div class="title">Annotated source listing with compiler optimization reports</div>
+</div>
+<div class="content">
+<div class="inner_header">
+<div class="title">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c
+</div>
+</div><div class="scrollable_left"><h5 style="color:#032640">Routines with optimization reports</h5><a class="annot_link" href="#l322">c_densitySolver(float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float,&nbsp;int,&nbsp;int)</a><br/><a class="annot_link" href="#l344">c_velocitySolver(float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float,&nbsp;float,&nbsp;int,&nbsp;int)</a><br/><a class="annot_link" href="#l186">advect(int,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;int,&nbsp;float)</a><br/><a class="annot_link" href="#l21">swap(float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;int)</a><br/><a class="annot_link" href="#l291">project(float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float,&nbsp;int)</a><br/><a class="annot_link" href="#l93">linearSolver(int,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float,&nbsp;float,&nbsp;float,&nbsp;int)</a><br/><a class="annot_link" href="#l53">setBoundry(int,&nbsp;float&nbsp;*,&nbsp;int)</a><br/><a class="annot_link" href="#l11">build_index(int,&nbsp;int,&nbsp;int)</a><br/><a class="annot_link" href="#l120">diffuse(int,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float,&nbsp;float,&nbsp;int)</a><br/><a class="annot_link" href="#l235">vorticityConfinement(float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;int)</a><br/><a class="annot_link" href="#l135">calculate_curl(int,&nbsp;int,&nbsp;int,&nbsp;float&nbsp;*,&nbsp;float&nbsp;*)</a><br/><a class="annot_link" href="#l146">buoyancy(float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;int)</a><br/><a class="annot_link" href="#l38">addSource(float&nbsp;*,&nbsp;float&nbsp;*,&nbsp;int,&nbsp;float)</a><br/></div><div class="scrollable_right" id="code_layout">
+ <pre style="border-width:0px;"></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+</pre>
+<pre style="border-width:0px;"><a id="l1">1	 
+</a><a id="l2">2	#include &lt;time.h&gt;
+</a><a id="l3">3	#include &lt;stdio.h&gt;
+</a><a id="l4">4	#include &lt;math.h&gt;
+</a><a id="l5">5	#include &lt;stdlib.h&gt;
+</a><a id="l6">6	 
+</a><a id="l7">7	/*
+</a><a id="l8">8	 * function used to compute the linear position in a vector express as coordinate in a two-D structure
+</a><a id="l9">9	 */
+</a><a id="l10">10	int build_index(int i, int j, int grid_size)
+</a><a id="l11">11	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (build_index(int, int, int)) [8] <a class="annot_link" href="rapport1.html#l11">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(11,3)</a>
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l11">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(11,3)</a>:remark #34051: REGISTER ALLOCATION : [build_index] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:11
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    4[ rax rdx rsi rdi]
+        
+    Routine temporaries
+        Total         :      16
+            Global    :       0
+            Local     :      16
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l12">12	  return (i + (grid_size + 2) * j);
+</a><a id="l13">13	  }
+</a><a id="l14">14	
+</a><a id="l15">15	/*
+</a><a id="l16">16	 * Utility function to push new value in the array of a preceding time step
+</a><a id="l17">17	 *
+</a><a id="l18">18	 */
+</a><a id="l19">19	
+</a><a id="l20">20	void swap(float *d, float *dOld, int vector_size)
+</a><a id="l21">21	  { 
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (swap(float *, float *, int)) [4] <a class="annot_link" href="rapport1.html#l21">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(21,3)</a>
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l21">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(21,3)</a>:remark #34051: REGISTER ALLOCATION : [swap] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:21
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rdx rcx rsi rdi r8]
+        
+    Routine temporaries
+        Total         :      16
+            Global    :      10
+            Local     :       6
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l22">22	  int i;
+</a><a id="l23">23	  float tmp;
+</a><a id="l24">24	
+</a><a id="l25">25	  for (i=0 ; i &lt; vector_size ; i ++)
+</a><a id="l26">26	    {
+</a><a id="l27">27	    tmp = d[i]; 
+</a><a id="l28">28	    d[i] = dOld[i]; 
+</a><a id="l29">29	    dOld[i] = tmp; 
+</a><a id="l30">30	    }
+</a><a id="l31">31	  }
+</a><a id="l32">32	
+</a><a id="l33">33	/*
+</a><a id="l34">34	 * addSource: TO COMMENT
+</a><a id="l35">35	 */
+</a><a id="l36">36	
+</a><a id="l37">37	void addSource(float *x, float *x0, int vector_size, float factor)
+</a><a id="l38">38	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (addSource(float *, float *, int, float)) [13] <a class="annot_link" href="rapport1.html#l38">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(38,3)</a>
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l38">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(38,3)</a>:remark #34051: REGISTER ALLOCATION : [addSource] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:38
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rdx rsi rdi zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      19
+            Global    :      11
+            Local     :       8
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l39">39	  int i;
+</a><a id="l40">40	
+</a><a id="l41">41	  for (i = 0; i &lt; vector_size; i++)
+</a><a id="l42">42	    {
+</a><a id="l43">43	    x[i] += factor * x0[i];
+</a><a id="l44">44	    }
+</a><a id="l45">45	  }
+</a><a id="l46">46	
+</a><a id="l47">47	/*
+</a><a id="l48">48	 * setBoundry: TO COMMENT
+</a><a id="l49">49	 * specifies simple boundry conditions.
+</a><a id="l50">50	 */
+</a><a id="l51">51	
+</a><a id="l52">52	void setBoundry(int b, float* x, int grid_size)
+</a><a id="l53">53	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (setBoundry(int, float *, int)) [7] <a class="annot_link" href="rapport1.html#l53">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(53,3)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l60">(60,10)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l60">(60,46)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l61">(61,10)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l61">(61,55)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l65">(65,9)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l65">(65,43)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l66">(66,9)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l66">(66,53)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l70">(70,9)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l70">(70,44)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l71">(71,9)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l71">(71,54)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l75">(75,8)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l75">(75,42)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l76">(76,8)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l76">(76,52)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l80">(80,6)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l80">(80,48)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l80">(80,82)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l81">(81,6)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l81">(81,58)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l81">(81,102)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l82">(82,6)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l82">(82,58)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l82">(82,100)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l83">(83,6)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l83">(83,68)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l83">(83,120)</a> build_index(int, int, int)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l53">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(53,3)</a>:remark #34051: REGISTER ALLOCATION : [setBoundry] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:53
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   12[ rax rdx rbx rbp rsi rdi r12-r15 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :     207
+            Global    :      80
+            Local     :     127
+        Regenerable   :      21
+        Spilled       :      14
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      64 bytes*
+            Reads     :      11 [1.02e+01 ~ 2.5%]
+            Writes    :       9 [8.20e+00 ~ 2.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l54">54	  int i;
+</a><a id="l55">55	
+</a><a id="l56">56	  for (i = 1; i &lt;= grid_size; i++)
+</a><a id="l57">57	    {
+</a><a id="l58">58	    if (b==1)
+</a><a id="l59">59	       {
+</a><a id="l60">60	       x[build_index(0, i, grid_size)] =  -x[build_index(1, i, grid_size)];
+</a><a id="l61">61	       x[build_index(grid_size+1, i, grid_size)] = -x[build_index(grid_size, i, grid_size)];
+</a><a id="l62">62	       }
+</a><a id="l63">63	     else
+</a><a id="l64">64	      {
+</a><a id="l65">65	      x[build_index(0, i, grid_size)] = x[build_index(1, i, grid_size)];
+</a><a id="l66">66	      x[build_index(grid_size+1, i, grid_size)] = x[build_index(grid_size, i, grid_size)];
+</a><a id="l67">67	      }
+</a><a id="l68">68	   if (b==2)
+</a><a id="l69">69	      {
+</a><a id="l70">70	      x[build_index(i, 0, grid_size)] = -x[build_index(i, 1, grid_size)];
+</a><a id="l71">71	      x[build_index(i, grid_size+1, grid_size)] = -x[build_index(i, grid_size, grid_size)];
+</a><a id="l72">72	      }
+</a><a id="l73">73	   else
+</a><a id="l74">74	     {
+</a><a id="l75">75	     x[build_index(i, 0, grid_size)] = x[build_index(i, 1, grid_size)];
+</a><a id="l76">76	     x[build_index(i, grid_size+1, grid_size)] = x[build_index(i, grid_size, grid_size)];
+</a><a id="l77">77	     }
+</a><a id="l78">78	   }
+</a><a id="l79">79	
+</a><a id="l80">80	   x[build_index(0, 0, grid_size)] = 0.5f * (x[build_index(1, 0, grid_size)] + x[build_index(0, 1, grid_size)]);
+</a><a id="l81">81	   x[build_index(0, grid_size+1, grid_size)] = 0.5f * (x[build_index(1, grid_size+1, grid_size)] + x[build_index(0, grid_size, grid_size)]);
+</a><a id="l82">82	   x[build_index(grid_size+1, 0, grid_size)] = 0.5f * (x[build_index(grid_size, 0, grid_size)] + x[build_index(grid_size+1, 1, grid_size)]);
+</a><a id="l83">83	   x[build_index(grid_size+1, grid_size+1, grid_size)] = 0.5f * (x[build_index(grid_size, grid_size+1, grid_size)] + x[build_index(grid_size+1, grid_size, grid_size)]);
+</a><a id="l84">84	   }
+</a><a id="l85">85	
+</a><a id="l86">86	/*
+</a><a id="l87">87	 * Iterative linear system solver using the Gauss-sidel
+</a><a id="l88">88	 * relaxation technique. Room for much improvement here...
+</a><a id="l89">89	 *
+</a><a id="l90">90	 */
+</a><a id="l91">91	
+</a><a id="l92">92	void linearSolver(int b, float* x, float* x0, float a, float c, float dt, int grid_size)
+</a><a id="l93">93	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (linearSolver(int, float *, float *, float, float, float, int)) [6] <a class="annot_link" href="rapport1.html#l93">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(93,3)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l102">(102,11)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l102">(102,52)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l102">(102,88)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l102">(102,126)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l102">(102,162)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l102">(102,201)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l105">(105,5)</a> setBoundry(int, float *, int)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l93">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(93,3)</a>:remark #34051: REGISTER ALLOCATION : [linearSolver] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:93
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   16[ rax rdx rcx rbx rbp rsi rdi r8-r9 r12-r15 zmm0-zmm2]
+        
+    Routine temporaries
+        Total         :      73
+            Global    :      33
+            Local     :      40
+        Regenerable   :       1
+        Spilled       :      18
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      96 bytes*
+            Reads     :      17 [6.73e+03 ~ 25.1%]
+            Writes    :      14 [2.32e+03 ~ 8.7%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l94">94	  int i,j,k;
+</a><a id="l95">95	
+</a><a id="l96">96	  for (k = 0; k &lt; 20; k++)
+</a><a id="l97">97	    {
+</a><a id="l98">98	    for (i = 1; i &lt;= grid_size; i++)
+</a><a id="l99">99	      {
+</a><a id="l100">100	      for (j = 1; j &lt;= grid_size; j++)
+</a><a id="l101">101	        {
+</a><a id="l102">102	        x[build_index(i, j, grid_size)] = (a * ( x[build_index(i-1, j, grid_size)] + x[build_index(i+1, j, grid_size)] +   x[build_index(i, j-1, grid_size)] + x[build_index(i, j+1, grid_size)]) +  x0[build_index(i, j, grid_size)]) / c;
+</a><a id="l103">103	        }
+</a><a id="l104">104	      }
+</a><a id="l105">105	    setBoundry(b, x, grid_size);
+</a><a id="l106">106	    }
+</a><a id="l107">107	  }
+</a><a id="l108">108	
+</a><a id="l109">109	/*
+</a><a id="l110">110	 * Recalculate the input array with diffusion effects.
+</a><a id="l111">111	 * Here we consider a stable method of diffusion by
+</a><a id="l112">112	 * finding the densities, which when diffused backward
+</a><a id="l113">113	 * in time yield the same densities we started with.
+</a><a id="l114">114	 * This is achieved through use of a linear solver to
+</a><a id="l115">115	 * solve the sparse matrix built from this linear system.
+</a><a id="l116">116	 * TO COMMENT
+</a><a id="l117">117	 */
+</a><a id="l118">118	
+</a><a id="l119">119	void diffuse(int b, float* c, float* c0, float diff, float dt, int grid_size)
+</a><a id="l120">120	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (diffuse(int, float *, float *, float, float, int)) [9] <a class="annot_link" href="rapport1.html#l120">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(120,3)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l123">(123,3)</a> linearSolver(int, float *, float *, float, float, float, int)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l120">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(120,3)</a>:remark #34051: REGISTER ALLOCATION : [diffuse] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:120
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    8[ rdx rcx rsi rdi zmm0-zmm3]
+        
+    Routine temporaries
+        Total         :      32
+            Global    :       0
+            Local     :      32
+        Regenerable   :       1
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l121">121	  float a = dt * diff * grid_size * grid_size;
+</a><a id="l122">122	
+</a><a id="l123">123	  linearSolver(b, c, c0, a, 1 + 4 * a, dt, grid_size);
+</a><a id="l124">124	  }
+</a><a id="l125">125	
+</a><a id="l126">126	
+</a><a id="l127">127	/*
+</a><a id="l128">128	 * Calculate the curl at position (i, j) in the fluid grid.
+</a><a id="l129">129	 * Physically this represents the vortex strength at the
+</a><a id="l130">130	 * cell. Computed as follows: w = (del x U) where U is the
+</a><a id="l131">131	 * velocity vector at (i, j).
+</a><a id="l132">132	 *
+</a><a id="l133">133	 */
+</a><a id="l134">134	float calculate_curl(int i, int j, int grid_size, float *u, float *v)
+</a><a id="l135">135	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (calculate_curl(int, int, int, float *, float *)) [11] <a class="annot_link" href="rapport1.html#l135">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(135,3)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l136">(136,20)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l136">(136,58)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l137">(137,20)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l137">(137,58)</a> build_index(int, int, int)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l135">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(135,3)</a>:remark #34051: REGISTER ALLOCATION : [calculate_curl] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:135
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   13[ rax rdx rcx rbx rsi rdi r8 r12-r15 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      53
+            Global    :      21
+            Local     :      32
+        Regenerable   :       1
+        Spilled       :       7
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      16 bytes*
+            Reads     :       2 [2.00e+00 ~ 3.2%]
+            Writes    :       2 [2.00e+00 ~ 3.2%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l136">136	  float du_dy = (u[build_index(i, j + 1, grid_size)] - u[build_index(i, j - 1, grid_size)]) * 0.5f;
+</a><a id="l137">137	  float dv_dx = (v[build_index(i + 1, j, grid_size)] - v[build_index(i - 1, j, grid_size)]) * 0.5f;
+</a><a id="l138">138	
+</a><a id="l139">139	  return du_dy - dv_dx;
+</a><a id="l140">140	  }
+</a><a id="l141">141	
+</a><a id="l142">142	/*
+</a><a id="l143">143	 * buoyancy: TO COMMENT
+</a><a id="l144">144	 */
+</a><a id="l145">145	float buoyancy(float *dst, float *src, int grid_size)
+</a><a id="l146">146	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (buoyancy(float *, float *, int)) [12] <a class="annot_link" href="rapport1.html#l146">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(146,3)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l158">(158,19)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l169">(169,11)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l169">(169,51)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l169">(169,93)</a> build_index(int, int, int)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l146">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(146,3)</a>:remark #34051: REGISTER ALLOCATION : [buoyancy] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:146
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   12[ rax rdx rbx rbp rsi rdi r12-r15 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      53
+            Global    :      27
+            Local     :      26
+        Regenerable   :       3
+        Spilled       :       8
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      16 bytes*
+            Reads     :       4 [7.39e+01 ~ 7.1%]
+            Writes    :       4 [4.99e+01 ~ 4.8%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l147">147	  float Tamb = 0;
+</a><a id="l148">148	  float a = 0.000625f;
+</a><a id="l149">149	  float b = 0.025f;
+</a><a id="l150">150	  int i,j;
+</a><a id="l151">151	
+</a><a id="l152">152	  float current_max=0;
+</a><a id="l153">153	
+</a><a id="l154">154	  for (i = 1; i &lt;= grid_size; i++)
+</a><a id="l155">155	    {
+</a><a id="l156">156	    for (j = 1; j &lt;= grid_size; j++)
+</a><a id="l157">157	      {
+</a><a id="l158">158	      Tamb += src[build_index(i, j, grid_size)];
+</a><a id="l159">159	      }
+</a><a id="l160">160	    }
+</a><a id="l161">161	  // get average temperature
+</a><a id="l162">162	  Tamb /= (grid_size * grid_size);
+</a><a id="l163">163	
+</a><a id="l164">164	  // for each cell compute buoyancy force
+</a><a id="l165">165	  for (i = 1; i &lt;= grid_size; i++)
+</a><a id="l166">166	    {
+</a><a id="l167">167	    for (j = 1; j &lt;= grid_size; j++)
+</a><a id="l168">168	      {
+</a><a id="l169">169	      dst[build_index(i, j, grid_size)] = a * src[build_index(i, j, grid_size)] + -b * (src[build_index(i, j, grid_size)] - Tamb);
+</a><a id="l170">170	      }
+</a><a id="l171">171	    }
+</a><a id="l172">172	  }
+</a><a id="l173">173	
+</a><a id="l174">174	
+</a><a id="l175">175	/*
+</a><a id="l176">176	 * Calculate the input array after advection. We start with an
+</a><a id="l177">177	 * input array from the previous timestep and an and output array.
+</a><a id="l178">178	 * For all grid cells we need to calculate for the next timestep,
+</a><a id="l179">179	 * we trace the cell's center position backwards through the
+</a><a id="l180">180	 * velocity field. Then we interpolate from the grid of the previous
+</a><a id="l181">181	 * timestep and assign this value to the current grid cell.
+</a><a id="l182">182	 * MORE COMMENT
+</a><a id="l183">183	 */
+</a><a id="l184">184	
+</a><a id="l185">185	void advect(int b, float* d, float* d0, float* du, float* dv, int grid_size, float dt)
+</a><a id="l186">186	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (advect(int, float *, float *, float *, float *, int, float)) [3] <a class="annot_link" href="rapport1.html#l186">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(186,3)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l198">(198,24)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l199">(199,24)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l219">(219,9)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l219">(219,54)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l219">(219,96)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l220">(220,44)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l220">(220,86)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l223">(223,3)</a> setBoundry(int, float *, int)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l186">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(186,3)</a>:remark #34051: REGISTER ALLOCATION : [advect] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:186
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   26[ rax rdx rcx rbx rbp rsi rdi r8-r9 r12-r15 zmm0-zmm12]
+        
+    Routine temporaries
+        Total         :     116
+            Global    :      46
+            Local     :      70
+        Regenerable   :       4
+        Spilled       :      22
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :     128 bytes*
+            Reads     :      26 [5.62e+02 ~ 17.8%]
+            Writes    :      22 [2.92e+02 ~ 9.3%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l187">187	  int i, j;
+</a><a id="l188">188	  int i0, j0, i1, j1;
+</a><a id="l189">189	  float x, y, s0, t0, s1, t1, dt0;
+</a><a id="l190">190	
+</a><a id="l191">191	  dt0 = dt * grid_size;
+</a><a id="l192">192	
+</a><a id="l193">193	  for (i = 1; i &lt;= grid_size; i++)
+</a><a id="l194">194	    {
+</a><a id="l195">195	    for (j = 1; j &lt;= grid_size; j++)
+</a><a id="l196">196	      {
+</a><a id="l197">197	      // go backwards through velocity field
+</a><a id="l198">198	      x = i - dt0 * du[build_index(i, j, grid_size)];
+</a><a id="l199">199	      y = j - dt0 * dv[build_index(i, j, grid_size)];
+</a><a id="l200">200	
+</a><a id="l201">201	      // interpolate results
+</a><a id="l202">202	      if (x &gt; grid_size + 0.5) x = grid_size + 0.5f;
+</a><a id="l203">203	      if (x &lt; 0.5)     x = 0.5f;
+</a><a id="l204">204	
+</a><a id="l205">205	      i0 = (int) x;
+</a><a id="l206">206	      i1 = i0 + 1;
+</a><a id="l207">207	
+</a><a id="l208">208	      if (y &gt; grid_size + 0.5) y = grid_size + 0.5f;
+</a><a id="l209">209	      if (y &lt; 0.5)     y = 0.5f;
+</a><a id="l210">210	
+</a><a id="l211">211	      j0 = (int) y;
+</a><a id="l212">212	      j1 = j0 + 1;
+</a><a id="l213">213	
+</a><a id="l214">214	      s1 = x - i0;
+</a><a id="l215">215	      s0 = 1 - s1;
+</a><a id="l216">216	      t1 = y - j0;
+</a><a id="l217">217	      t0 = 1 - t1;
+</a><a id="l218">218	
+</a><a id="l219">219	      d[build_index(i, j,grid_size)] = s0 * (t0 * d0[build_index(i0, j0, grid_size)] + t1 * d0[build_index(i0, j1, grid_size)])
+</a><a id="l220">220	                           + s1 * (t0 * d0[build_index(i1, j0, grid_size)] + t1 * d0[build_index(i1, j1, grid_size)]);
+</a><a id="l221">221	      }
+</a><a id="l222">222	    }
+</a><a id="l223">223	  setBoundry(b, d, grid_size);
+</a><a id="l224">224	  }
+</a><a id="l225">225	
+</a><a id="l226">226	/*
+</a><a id="l227">227	 * Calculate the vorticity confinement force for each cell
+</a><a id="l228">228	 * in the fluid grid. At a point (i,j), Fvc = N x w where
+</a><a id="l229">229	 * w is the curl at (i,j) and N = del |w| / |del |w||.
+</a><a id="l230">230	 * N is the vector pointing to the vortex center, hence we
+</a><a id="l231">231	 * add force perpendicular to N.
+</a><a id="l232">232	 *
+</a><a id="l233">233	 */
+</a><a id="l234">234	void vorticityConfinement(float* Fvc_x, float* Fvc_y, float *curl, float *u, float *v, int grid_size)
+</a><a id="l235">235	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (vorticityConfinement(float *, float *, float *, float *, float *, int)) [10] <a class="annot_link" href="rapport1.html#l235">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(235,3)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l246">(246,12)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l246">(246,48)</a> calculate_curl(int, int, int, float *, float *)
+  -&gt; <a class="annot_link" href="rapport1.html#l255">(255,21)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l255">(255,62)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l256">(256,21)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l256">(256,62)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l266">(266,19)</a> calculate_curl(int, int, int, float *, float *)
+  -&gt; <a class="annot_link" href="rapport1.html#l269">(269,13)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l270">(270,13)</a> build_index(int, int, int)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l235">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(235,3)</a>:remark #34051: REGISTER ALLOCATION : [vorticityConfinement] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:235
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   15[ rax rdx rcx rbx rbp rsi rdi r8-r9 r12-r15 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :     111
+            Global    :      49
+            Local     :      62
+        Regenerable   :       4
+        Spilled       :      17
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      88 bytes*
+            Reads     :      19 [4.51e+02 ~ 18.1%]
+            Writes    :      11 [1.14e+02 ~ 4.6%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l236">236	  int i,j;
+</a><a id="l237">237	  float dw_dx, dw_dy;
+</a><a id="l238">238	  float length;
+</a><a id="l239">239	  float vorticity;
+</a><a id="l240">240	
+</a><a id="l241">241	  // Calculate magnitude of curl(u,v) for each cell. (|w|)
+</a><a id="l242">242	  for (i = 1; i &lt;= grid_size; i++)
+</a><a id="l243">243	    {
+</a><a id="l244">244	    for (j = 1; j &lt;= grid_size; j++)
+</a><a id="l245">245	      {
+</a><a id="l246">246	      curl[build_index(i, j, grid_size)] = abs(calculate_curl(i, j, grid_size, u, v));
+</a><a id="l247">247	      }
+</a><a id="l248">248	    }
+</a><a id="l249">249	
+</a><a id="l250">250	  for (i = 2; i &lt; grid_size; i++)
+</a><a id="l251">251	    {
+</a><a id="l252">252	    for (j = 2; j &lt; grid_size; j++)
+</a><a id="l253">253	      {
+</a><a id="l254">254	      // Find derivative of the magnitude (n = del |w|)
+</a><a id="l255">255	      dw_dx = (curl[build_index(i + 1, j, grid_size)] - curl[build_index(i - 1, j, grid_size)]) * 0.5f;
+</a><a id="l256">256	      dw_dy = (curl[build_index(i, j + 1, grid_size)] - curl[build_index(i, j - 1, grid_size)]) * 0.5f;
+</a><a id="l257">257	
+</a><a id="l258">258	      // Calculate vector length. (|n|)
+</a><a id="l259">259	      // Add small factor to prevent divide by zeros.
+</a><a id="l260">260	      length = (float) sqrt(dw_dx * dw_dx + dw_dy * dw_dy) + 0.000001f;
+</a><a id="l261">261	
+</a><a id="l262">262	      // N = ( n/|n| )
+</a><a id="l263">263	      dw_dx /= length;
+</a><a id="l264">264	      dw_dy /= length;
+</a><a id="l265">265	
+</a><a id="l266">266	      vorticity = calculate_curl(i, j, grid_size, u,v);
+</a><a id="l267">267	
+</a><a id="l268">268	      // N x w
+</a><a id="l269">269	      Fvc_x[build_index(i, j, grid_size)] = dw_dy * -vorticity;
+</a><a id="l270">270	      Fvc_y[build_index(i, j, grid_size)] = dw_dx *  vorticity;
+</a><a id="l271">271	      }
+</a><a id="l272">272	    }
+</a><a id="l273">273	  }
+</a><a id="l274">274	
+</a><a id="l275">275	
+</a><a id="l276">276	/*
+</a><a id="l277">277	 * Use project() to make the velocity a mass conserving,
+</a><a id="l278">278	 * incompressible field. Achieved through a Hodge
+</a><a id="l279">279	 * decomposition. First we calculate the divergence field
+</a><a id="l280">280	 * of our velocity using the mean finite differnce approach,
+</a><a id="l281">281	 * and apply the linear solver to compute the Poisson
+</a><a id="l282">282	 * equation and obtain a "height" field. Now we subtract
+</a><a id="l283">283	 * the gradient of this field to obtain our mass conserving
+</a><a id="l284">284	 * velocity field.
+</a><a id="l285">285	 *
+</a><a id="l286">286	 * TO COMMENT
+</a><a id="l287">287	 *
+</a><a id="l288">288	 */
+</a><a id="l289">289	
+</a><a id="l290">290	void project(float* x, float* y, float* p, float* div, float dt, int grid_size)
+</a><a id="l291">291	 {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (project(float *, float *, float *, float *, float, int)) [5] <a class="annot_link" href="rapport1.html#l291">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(291,2)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l298">(298,10)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l298">(298,45)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l298">(298,81)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l298">(298,117)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l298">(298,153)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l299">(299,8)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l302">(302,2)</a> setBoundry(int, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l303">(303,2)</a> setBoundry(int, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l304">(304,2)</a> linearSolver(int, float *, float *, float, float, float, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l310">(310,8)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l310">(310,63)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l310">(310,99)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l311">(311,8)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l311">(311,63)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l311">(311,99)</a> build_index(int, int, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l314">(314,3)</a> setBoundry(int, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l315">(315,3)</a> setBoundry(int, float *, int)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l291">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(291,2)</a>:remark #34051: REGISTER ALLOCATION : [project] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:291
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   16[ rax rdx rcx rbx rbp rsi rdi r8-r9 r12-r15 zmm0-zmm2]
+        
+    Routine temporaries
+        Total         :     146
+            Global    :      55
+            Local     :      91
+        Regenerable   :      13
+        Spilled       :      21
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :     120 bytes*
+            Reads     :      36 [6.51e+02 ~ 22.7%]
+            Writes    :      17 [8.58e+01 ~ 3.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l292">292	 int i, j;
+</a><a id="l293">293	    
+</a><a id="l294">294	 for (i = 1; i &lt;= grid_size; i++)
+</a><a id="l295">295	   {
+</a><a id="l296">296	   for (j = 1; j &lt;= grid_size; j++)
+</a><a id="l297">297	     {
+</a><a id="l298">298	     div[build_index(i, j, grid_size)] = (x[build_index(i+1, j, grid_size)] - x[build_index(i-1, j, grid_size)] + y[build_index(i, j+1, grid_size)] - y[build_index(i, j-1, grid_size)]) * - 0.5f / grid_size;
+</a><a id="l299">299	     p[build_index(i, j, grid_size)] = 0;
+</a><a id="l300">300	     }
+</a><a id="l301">301	   }
+</a><a id="l302">302	 setBoundry(0, div, grid_size);
+</a><a id="l303">303	 setBoundry(0, p, grid_size);
+</a><a id="l304">304	 linearSolver(0, p, div, 1, 4, dt, grid_size);
+</a><a id="l305">305	
+</a><a id="l306">306	 for (i = 1; i &lt;= grid_size; i++)
+</a><a id="l307">307	   {
+</a><a id="l308">308	   for (j = 1; j &lt;= grid_size; j++)
+</a><a id="l309">309	     {
+</a><a id="l310">310	     x[build_index(i, j, grid_size)] -= 0.5f * grid_size * (p[build_index(i+1, j, grid_size)] - p[build_index(i-1, j, grid_size)]);
+</a><a id="l311">311	     y[build_index(i, j, grid_size)] -= 0.5f * grid_size * (p[build_index(i, j+1, grid_size)] - p[build_index(i, j-1, grid_size)]);
+</a><a id="l312">312	     }
+</a><a id="l313">313	   }
+</a><a id="l314">314	  setBoundry(1, x, grid_size);
+</a><a id="l315">315	  setBoundry(2, y, grid_size);
+</a><a id="l316">316	  }
+</a><a id="l317">317	
+</a><a id="l318">318	/*
+</a><a id="l319">319	 * The basic density solving routine.
+</a><a id="l320">320	 */
+</a><a id="l321">321	void c_densitySolver(float *d, float *dOld, float diff, float *u, float *v , float dt, int grid_size, int vector_size)
+</a><a id="l322">322	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (c_densitySolver(float *, float *, float, float *, float *, float, int, int)) [1] <a class="annot_link" href="rapport1.html#l322">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(322,3)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l326">(326,3)</a> addSource(float *, float *, int, float)
+  -&gt; <a class="annot_link" href="rapport1.html#l327">(327,3)</a> swap(float *, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l329">(329,3)</a> diffuse(int, float *, float *, float, float, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l330">(330,3)</a> swap(float *, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l332">(332,3)</a> advect(int, float *, float *, float *, float *, int, float)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l322">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(322,3)</a>:remark #34051: REGISTER ALLOCATION : [c_densitySolver] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:322
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   15[ rax rdx rcx rbx rbp rsi rdi r8-r9 r12-r15 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      48
+            Global    :      17
+            Local     :      31
+        Regenerable   :       3
+        Spilled       :       9
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      24 bytes*
+            Reads     :       4 [4.00e+00 ~ 4.4%]
+            Writes    :       3 [3.00e+00 ~ 3.3%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l323">323	  int i;
+</a><a id="l324">324	
+</a><a id="l325">325	  // add density inputted by mouse
+</a><a id="l326">326	  addSource(d, dOld, vector_size, dt);
+</a><a id="l327">327	  swap(d, dOld, vector_size);
+</a><a id="l328">328	
+</a><a id="l329">329	  diffuse(0, d, dOld, diff, dt, grid_size);
+</a><a id="l330">330	  swap(d, dOld, vector_size);
+</a><a id="l331">331	
+</a><a id="l332">332	  advect(0, d, dOld, u, v, grid_size, dt);
+</a><a id="l333">333	  // clear input density array for next frame
+</a><a id="l334">334	  for (i = 0; i &lt; vector_size; i++) 
+</a><a id="l335">335	    {
+</a><a id="l336">336	    dOld[i] = 0;
+</a><a id="l337">337	    }
+</a><a id="l338">338	  }
+</a><a id="l339">339	
+</a><a id="l340">340	/*
+</a><a id="l341">341	 * The basic velocity solving routine as described by Stam.
+</a><a id="l342">342	 */
+</a><a id="l343">343	void c_velocitySolver( float *u, float *uOld, float *v, float *vOld, float *curl, float *d, float visc, float dt, int grid_size, int vector_size)
+</a><a id="l344">344	  {
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (c_velocitySolver(float *, float *, float *, float *, float *, float *, float, float, int, int)) [2] <a class="annot_link" href="rapport1.html#l344">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(344,3)</a>
+  -&gt; <a class="annot_link" href="rapport1.html#l348">(348,3)</a> addSource(float *, float *, int, float)
+  -&gt; <a class="annot_link" href="rapport1.html#l349">(349,3)</a> addSource(float *, float *, int, float)
+  -&gt; <a class="annot_link" href="rapport1.html#l352">(352,3)</a> vorticityConfinement(float *, float *, float *, float *, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l354">(354,3)</a> addSource(float *, float *, int, float)
+  -&gt; <a class="annot_link" href="rapport1.html#l355">(355,3)</a> addSource(float *, float *, int, float)
+  -&gt; <a class="annot_link" href="rapport1.html#l357">(357,3)</a> buoyancy(float *, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l358">(358,3)</a> addSource(float *, float *, int, float)
+  -&gt; <a class="annot_link" href="rapport1.html#l362">(362,3)</a> swap(float *, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l364">(364,3)</a> diffuse(int, float *, float *, float, float, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l366">(366,3)</a> swap(float *, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l367">(367,3)</a> diffuse(int, float *, float *, float, float, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l371">(371,3)</a> project(float *, float *, float *, float *, float, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l373">(373,3)</a> swap(float *, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l374">(374,3)</a> swap(float *, float *, int)
+  -&gt; <a class="annot_link" href="rapport1.html#l377">(377,3)</a> advect(int, float *, float *, float *, float *, int, float)
+  -&gt; <a class="annot_link" href="rapport1.html#l378">(378,3)</a> advect(int, float *, float *, float *, float *, int, float)
+  -&gt; <a class="annot_link" href="rapport1.html#l381">(381,3)</a> project(float *, float *, float *, float *, float, int)
+
+remark #15320: routine skipped: loop optimizations disabled
+<a class="annot_link" href="rapport1.html#l344">/home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c(344,3)</a>:remark #34051: REGISTER ALLOCATION : [c_velocitySolver] /home/ilyess/Desktop/perf/projet/fluid/FLUID/fluid.c:344
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   14[ rax rdx rcx rbx rsi rdi r8-r9 r12-r15 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :     107
+            Global    :      19
+            Local     :      88
+        Regenerable   :      24
+        Spilled       :       9
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      32 bytes*
+            Reads     :      14 [1.40e+01 ~ 8.7%]
+            Writes    :       4 [4.00e+00 ~ 2.5%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l345">345	  int i;
+</a><a id="l346">346	
+</a><a id="l347">347	  // add velocity that was input by mouse
+</a><a id="l348">348	  addSource(u, uOld, vector_size, dt);
+</a><a id="l349">349	  addSource(v, vOld, vector_size, dt);
+</a><a id="l350">350	
+</a><a id="l351">351	  // add in vorticity confinement force
+</a><a id="l352">352	  vorticityConfinement(uOld, vOld, curl, u, v, grid_size);
+</a><a id="l353">353	
+</a><a id="l354">354	  addSource(u, uOld, vector_size, dt);
+</a><a id="l355">355	  addSource(v, vOld, vector_size, dt);
+</a><a id="l356">356	
+</a><a id="l357">357	  buoyancy(vOld, d, grid_size);
+</a><a id="l358">358	  addSource(v, vOld, vector_size, dt);
+</a><a id="l359">359	
+</a><a id="l360">360	  // swapping arrays for economical mem use
+</a><a id="l361">361	  // and calculating diffusion in velocity.
+</a><a id="l362">362	  swap(u, uOld, vector_size);
+</a><a id="l363">363	
+</a><a id="l364">364	  diffuse(0, u, uOld, visc, dt, grid_size);
+</a><a id="l365">365	
+</a><a id="l366">366	  swap(v, vOld, vector_size);
+</a><a id="l367">367	  diffuse(0, v, vOld, visc, dt, grid_size);
+</a><a id="l368">368	
+</a><a id="l369">369	  // we create an incompressible field
+</a><a id="l370">370	  // for more effective advection.
+</a><a id="l371">371	  project(u, v, uOld, vOld, dt, grid_size);
+</a><a id="l372">372	
+</a><a id="l373">373	  swap(u, uOld, vector_size);
+</a><a id="l374">374	  swap(v, vOld, vector_size);
+</a><a id="l375">375	
+</a><a id="l376">376	  // self advect velocities
+</a><a id="l377">377	  advect(1, u, uOld, uOld, vOld, grid_size, dt);
+</a><a id="l378">378	  advect(2, v, vOld, uOld, vOld, grid_size, dt);
+</a><a id="l379">379	
+</a><a id="l380">380	  // make an incompressible field
+</a><a id="l381">381	  project(u, v, uOld, vOld, dt, grid_size);
+</a><a id="l382">382	
+</a><a id="l383">383	  // clear all input velocities for next frame
+</a><a id="l384">384	  for (i = 0; i &lt; vector_size; i++)
+</a><a id="l385">385	      { 
+</a><a id="l386">386	      uOld[i] = 0; 
+</a><a id="l387">387	      vOld[i] = 0; 
+</a><a id="l388">388	      }
+</a><a id="l389">389	  }
+</a><a id="l390">390	
+</a><a id="l391">391	
+</a><a id="l392">392	
+</a></pre> </div></div>
+<div class="footer">
+<div class="title">Intel Corporation 2015
+</div>
+</div>
+</body>
+</html>

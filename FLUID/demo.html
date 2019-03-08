@@ -1,0 +1,42 @@
+<html> 
+<head>
+<title>MHIPS Fluid Modeling Hands-on-  Based on Caltech Stam's Stable Fluids</title>
+
+<td width=170 valign=top align=left>
+<font size=3 face="Arial,Helvetica"><b>
+AOC Hands-on: Performance Tuning of a Physical based fluid simulation: </b></font>
+</td>
+
+<td width=467 valign=top><font size=3 face="Arial,Helvetica">
+<p>
+Injection of a physic model is necessary to obtain realistic graphics. For instance the Navier-Stokes equations are used in the example below to create realistic fluid flows. Navier-Stokes equations are known to be extremely demanding in term of computing power, therefore numerous researches have been conducted to determine the best trade-off between the computational requirement and the perceived quality of the simulation. 
+<p>
+The following example is based on a 2004 implementation by the Caltech Multi-Res Modeling Group of one of the their publication. In 2001, Fedkiw, Stam and Jensen published an algorithm for specific application to realistic smoke. They suggested "vorticity confinement" in which velocity is injected into the system in places most likely to be affected by the numerical dissipation inherent to the implicit semi-Lagrangian integration scheme. In addition they detailed a buoyancy force for economically create a realistic rising smoke field. 
+
+<p>
+Below a Java applet allows to test the quality of their solver. 
+During the AOC courses you will be in charge of optimizing the performance of this solver in order to allow more realistic simulation and to improve the user experience.
+<p>
+<b>Left click</b> to add smoke.<br>
+<b>Right click</b> and <b>drag</b> to add velocity.<br>
+Press '<b>v</b>' to display the velocity field.<br>
+Press '<b>r</b>' to reset the solver.<br>
+Use '<b>[</b>' and '<b>]</b>' to select the grid size.<br>
+Use '<b><</b>' and '<b>></b>' to modify the timestep.<br>
+<p>
+
+<center>
+<applet code=WebStart.class width=450 height=450>
+</applet>
+</center>
+<p>
+<hr>
+<b> Based on Caltech work of Peter Schr&ouml;der</b>
+</small>
+</font>
+</td>
+
+</body>
+</html>
+
+
